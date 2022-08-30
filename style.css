@@ -1,0 +1,81 @@
+.footer {
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  width: fit-content;
+  height: fit-content;
+  line-height: 60px;
+  border-radius: 2%;
+  border:#1D3461 solid 1px;
+  background-color: #f5f5f5;
+}
+
+#cartButton{
+  font-size: 2em;
+  text-align: center;
+  margin-left: 4em;
+}
+
+.cart {
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+  margin: 0.1em 0 0.1em 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: Varela Round;
+  background: #f1f1f1;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Card Styles */
+
+.card-sl {
+  margin-top: 2em;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  min-height: 50em;
+}
+
+.card-image img {
+  border-radius: 8px 8px 0px 0;
+}
+
+.card-heading {
+  font-size: 18px;
+  font-weight: bold;
+  background: #fff;
+  padding: 10px 15px;
+}
+
+.card-text {
+  padding: 10px 15px;
+  background: #fff;
+  font-size: 14px;
+  color: #636262;
+}
+
+.card-button {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  width: 100%;
+  background-color: #1F487E;
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+}
+
+.card-button:hover {
+  text-decoration: none;
+  background-color: #1D3461;
+  color: #fff;
+}

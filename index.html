@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Custom CSS -->
+  <link href="./style.css" rel="stylesheet" />
+  <!-- CSS only Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <title>128 Final</title>
+</head>
+<body>  
+  <!-- Main content -->
+  <div class="container py-5">
+    <div class="row">
+      <h1>ICS 128 Final Project</h1>
+      <h3>ICS 128 final e-commerce webpage</h3>
+    </div>
+    <div class="row text-center mb-1">
+        <div class="col-lg-7 mx-auto">
+            <h1 class="display-4">Product List</h1>
+        </div>
+    </div>
+    <div class="row">
+      <div class="mx-0">
+        <!-- Product listings -->
+      <ul class="list-group shadow" id="output">
+      </ul>
+    </div>
+  </div>
+  <!-- Sticky Footer -->
+  <footer class="footer">
+    <div class="container row m-0 p-0">
+      <div class='col mx-1'>
+        <select id="currencySelect" class="form-select form-select-sm my-3">
+          <option id="cad" value="1">CAD $</option>
+          <option id="usd" value="2">USD $</option>
+          <option id="eur" value="3">EUR €</option>
+        </select>
+      </div>
+      <div class='col'>
+        <p>Total: <span class="total">$0.00</span></p>
+      </div>
+      <div class='row mx-auto'>
+        <button type="button" class="btn btn-primary cart w-100" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+          Cart
+        </button>
+      </div>
+    </div>
+  </footer>
+  
+  <!--                    MODALS!                    -->
+  <!-- Checkout Modal -->
+  <div class="modal" tabindex="-1" id="checkoutModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="mx-0">
+                <!-- List group-->
+                <ul class="list-group shadow" id="cartOutput">
+                </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <p class="col-4 total">Total: <span class="total">$0.00</span></p>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" id="emptyCart">Empty Cart</button>
+          <button id="billing" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#billingModal">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Billing and Shipping form -->
+  <div class="modal" tabindex="-1" id="billingModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="mx-0">
+              <form id="billingForm">
+                <p class="dis fw-bold mb-2">Contact</p>
+                <div class="mb-3">
+                    <input name="email" class="form-control" type="email" placeholder="luke@skywalker.com">
+                </div>
+                <div class="mb-3">
+                    <input name="phone" maxlength=13 class="form-control" type="phone" placeholder="(+1)255-255-255">
+                </div>
+                <div class="mb-3">
+                  <p class="dis fw-bold mb-2">First name</p>
+                  <input name="fName" class="form-control" type="text">
+                  <p class="dis fw-bold mb-2">Last name</p>
+                  <input name="lName" class="form-control" type="text">
+              </div>
+                <div>
+                    <p class="dis fw-bold mb-2">Card details</p>
+                    <div class="d-flex align-items-center justify-content-between border rounded">
+                      <input name="cNum" maxlength=19 type="text" class="form-control" placeholder="1234 5678 9012 3456">
+                    </div>
+                    <div class="d-flex w-75">
+                      <select name="expirey_month"class="form-select px-0">
+                        <option>01</option>
+                        <option>02</option>
+                        <option>03</option>
+                        <option>04</option>
+                        <option>05</option>
+                        <option>06</option>
+                        <option>07</option>
+                        <option>08</option>
+                        <option>09</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                      </select>
+                      <select name="expirey_year"class="form-select px-0 w-150">
+                        <option>2022</option>
+                        <option>2023</option>
+                        <option>2024</option>
+                        <option>2025</option>
+                        <option>2026</option>
+                        <option>2027</option>
+                        <option>2028</option>
+                        <option>2029</option>
+                      </select>
+                      <input name="secureCode" type="text" maxlength=4 class="form-control px-0" placeholder="CVV">
+                    </div>
+                    <div class="my-3">
+                        <p class="dis fw-bold mb-2">Cardholder name</p>
+                        <input name="billingName" class="form-control" type="text" placeholder="Full Name">
+                    </div>
+                    <div>
+                      <p class="dis fw-bold mb-3">Billing address</p>
+                      <div class="d-flex my-1">
+                        <input name="address1" list="address1Datalist" class="form-control" type="text" placeholder="Address">
+                        <datalist id="address1Datalist"></datalist>
+                      </div>
+                      <div class="d-flex my-1">
+                        <input name="altAddress1" class="form-control" type="text" placeholder="Alternate address">
+                      </div>
+                      <div class="d-flex my-1">
+                        <input name="country1" class="form-control" type="text" placeholder="Country">
+                      </div>
+                      <div class="d-flex my-1">
+                          <input name="postal1" class="form-control" type="text" placeholder="Postal Code">
+                          <input name="prov1" class="form-control" type="text" placeholder="Province">
+                      </div>
+                      <div class="d-flex my-1">
+                        <input name="city1" class="form-control" type="text" placeholder="City">
+                      </div>
+                    </div>
+                    <p class="dis fw-bold mb-3">Shipping address</p>
+                    <div class="d-flex my-1">
+                      <label for="billingIsShipping">Billing same as shipping address</label>
+                    </div>
+                    <div class="d-flex my-1">
+                      <input name="billingIsShipping" class="mx-1" type="checkbox" checked/>
+                    </div>
+                    <div id="shipping">
+                      <div class="d-flex my-1">
+                        <input name="address2" list="address2Datalist" class="form-control" type="text" placeholder="Address">
+                        <datalist id="address2Datalist"></datalist>
+                      </div>
+                      <div class="d-flex my-1">
+                        <input name="altAddress2" class="form-control" type="text" placeholder="Alternate address">
+                      </div>
+                      <div class="d-flex my-1">
+                        <input name="country2" class="form-control" type="text" placeholder="Country">
+                      </div>
+                      <div class="d-flex my-1">
+                          <input name="postal2" class="form-control" type="text" placeholder="Postal Code">
+                          <input name="prov2" class="form-control" type="text" placeholder="Province">
+                      </div>
+                      <div class="d-flex my-1">
+                        <input name="city2" class="form-control" type="text" placeholder="City">
+                      </div>
+                    </div>
+                    <div>
+                      <div class="d-flex flex-column dis">
+                          <div class="align-items-center justify-content-between mb-2">
+                            <div class="d-flex">
+                              <p>Shipping</p>
+                              <p class="shipping px-1">$0.00</p>
+                            </div>
+                            <div class="d-flex">
+                              <p>Taxes</p>
+                              <p class="taxes px-1">$0.00</p>
+                            </div>
+                            <div class="d-flex">
+                              <p>Subtotal</p>
+                              <p class="subtotal px-1">$0.00</p>
+                            </div>
+                          </div>
+                          <div class="d-flex align-items-center justify-content-between mb-2">
+                              <p class="fw-bold">Total: <span class="finalTotal"></span></p>
+                          </div>
+                          <button id="submitButton" type="submit" disabled="disabled" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
+                      </div>
+                  </div>
+                </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <script src="./scripts/project.js"></script>
+</body>
